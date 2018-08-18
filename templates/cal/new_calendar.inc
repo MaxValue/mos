@@ -21,5 +21,5 @@
     </ul>
 {% endwith %}
 
-<a href="{{ more_events_url }}">more...</a>
+<a href="{% url 'cal_index' %}">more...</a>
 </div>

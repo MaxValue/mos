@@ -26,8 +26,7 @@ event_detail_dict.update(template_object_name='event')
 
 
 urlpatterns = patterns('',
-    (r'^$',
-     'cal.views.index', {}, 'cal_index'),
+    (r'^$', 'cal.views.index', {}, 'cal_index'),
     (r'^(?P<year>\d{4})/$', YearArchiveView.as_view(
         queryset=Event.all.all(),
         date_field="startDate",

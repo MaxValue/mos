@@ -20,7 +20,6 @@ def display_main_page(request):
     context.update(
         {'event_error_id': ' ',
         'latestevents': events,
-        'more_events_url': 'calendar/',
         'latestchanges': changes,
         'latestprojects': projects,
         'randommembers': randommembers}
