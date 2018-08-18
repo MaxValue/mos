@@ -7,41 +7,46 @@
 {% endblock %}
 
 {% block hos_content %}
-<div id="header">
-	<div id="branding">
-		<h1 id="site-name">{{HOS_NAME}} Calendar</h1>
+	<div id="header">
+		<div id="branding">
+			<h1 id="site-name">{{HOS_NAME}} Calendar</h1>
+		</div>
 	</div>
-</div>
-{% include 'cal/overview_event_navigation.inc'  %}
+	{% include 'cal/overview_event_navigation.inc'  %}
 
+	{% if type %}
+		 <p>  {{ type }}
+			 {% if title %}
+				 / <b>{{ title }}</b>  /
+			 {% endif %}
+	{% endif %}
 
-{% if type %}
-   <p>  {{ type }}
-     {% if title %}
-       / <b>{{ title }}</b>  /
-     {% endif %}
+	{% if description %}
+		 {{ description.description }}</p>
+	{% endif %}
 
-{% endif %}
-{% if description %}
-   {{ description.description }}</p>
-{% endif %}
+	<ul>
+		{% for date in date_list %}
+			<li style="display:inline;">
+				<a href="{% url "cal_archive_year" year=date.year %}">{{date.year}}</a>
+			</li>
+		{% endfor %}
+	</ul>
 
-<ul>{% for date in date_list %}
-  <li style="display:inline;"><a href="{% url "cal_archive_year" year=date.year %}">{{date.year}}</a></li>
-{% endfor %}</ul>
-
-    {% if type %}
-      {% with "True" as edit_disabled %}
-        {% with "True" as all_events %}   {# variable for switching more link ind calendar.inc #}
-	  {% include "cal/calendar.inc" %}
-        {% endwith %}
-      {% endwith %}
-    {% else %}
-       {% with "True" as all_events %}   {# variable for switching more link ind calendar.inc #}
-	  {% include "cal/calendar.inc" %}
-        {% endwith %}
-    {% endif %}
-<script type="text/javascript">
-    var calendarUpdateURL = '/calendar/ajax/list/';
-</script>
+	{% if type %}
+		{% with "True" as edit_disabled %}
+			{% with "True" as all_events %}
+				{# variable for switching more link ind calendar.inc #}
+				{% include "cal/calendar.inc" %}
+			{% endwith %}
+		{% endwith %}
+	{% else %}
+		{% with "True" as all_events %}
+			{# variable for switching more link ind calendar.inc #}
+			{% include "cal/calendar.inc" %}
+		{% endwith %}
+	{% endif %}
+	<script type="text/javascript">
+			var calendarUpdateURL = '/calendar/ajax/list/';
+	</script>
 {% endblock %}

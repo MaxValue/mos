@@ -54,9 +54,9 @@ urlpatterns = patterns('',
     (r'^new/$', 'cal.views.update_event', {'new': True}),
     (r'^locations/$', SpecialListView.as_view(
                             queryset=Location.objects.all(),
-                            events_by="Locations")),
+                            events_by="Locations"), {}, 'all_calendar_events_by_location'),
     (r'^categories/$', SpecialListView.as_view(
                             queryset=Category.objects.all(),
-                            events_by="Categories")),
+                            events_by="Categories"), {}, 'all_calendar_events_by_category'),
     (r'^ajax/list/(?P<number>\d*)/?$', 'cal.views.event_list'),
 )

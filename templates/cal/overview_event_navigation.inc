@@ -1,1 +1,5 @@
-<p align="right"><a href="/calendar/">ALL Events </a> | <a href="/calendar/locations/">ALL Locations / Events </a> | <a href="/calendar/categories/">ALL Categories / Events </a> </p>
+<p align="right">
+	<a href="{% url 'cal_index' %}">ALL Events </a> |
+	<a href="{% url 'all_calendar_events_by_location' %}">ALL Locations / Events </a> |
+	<a href="{% url 'all_calendar_events_by_category' %}">ALL Categories / Events </a>
+</p>

@@ -6,11 +6,6 @@
 {% with None as event %}
     {% load makeform %}
 <div id="calendar-content">
-
-    <script>
-    var came_from = '{{came_from}}';
-    </script>
-
     <ul class="eventlist">
     {% for event in latestevents %}
         {% makeform event cal.forms.EventForm event_form %}
