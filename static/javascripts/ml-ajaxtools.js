@@ -94,6 +94,11 @@ function set_invisible(obj){
 }
 
 
+function do_on_load()
+{
+    // Do nothing. *Tumbleweed crosses the web*
+}
+
 function enter_pressed(e){
     var keycode;
     if (window.event) keycode = window.event.keyCode; 
@@ -119,4 +124,3 @@ function submit_event(id) {
                                                                            }
                                                   })
 }
-

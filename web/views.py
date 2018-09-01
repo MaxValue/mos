@@ -9,6 +9,7 @@ from projects.models import Project
 from sources.models import WikiChange
 
 
+
 def display_main_page(request):
     events = Event.future.get_n(5)
     changes = WikiChange.objects.order_by('-updated')[:5]
